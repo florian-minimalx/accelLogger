@@ -6,7 +6,10 @@ The mechanical team identified the need to measure acceleration levels on all th
 - data capture to be synchronized between all accelerometers
 - minimum 10Hz acquisition bandwith
 # Architecture
-The architecture consists of an acquisition system responsible for logging the acceleration data into a csv file. The acquisition system (a RPi 4 model B) provides a wifi access point for all sensor nodes.
+The architecture consists of an acquisition system responsible for logging the acceleration data into a csv file. The acquisition system (a RPi 4 model B) provides a wifi access point for all sensor nodes but limited to 4 nodes. Therefore it will be necessary **to create a local network using a router or a phone.**
+
+- ssid: minimalist
+- passeord: brianeno
 
 Each accelerometer sensor node consists of an MCU (ESP32) acquiring the acceleration data from a MPU6050 sensor over I2C. The MCU connects over wifi to the acquisition system's MQTT broker. The data is formatted and sent as payload on a topic dedicated to the sensor.
 
@@ -28,7 +31,7 @@ THe server can be accessed from a phone or computer connected to the same wifi n
 - ssid: minimalist
 - passeord: brianeno
 
-The address of the server is: http://10.42.0.1:1880/ui
+The address of the server is: http://raspberrypi.local:1880/ui
 
 The server feature 3 mains tabs accessible on the left hand side of the webpage:
 - a data navigation to retrieve the log data
